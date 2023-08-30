@@ -1,5 +1,5 @@
 import type { PluginOption } from 'vite'
-import { createMarkdown, Shiki, container } from './vite-plugin-vue-md/src'
+import { createMarkdown} from './vite-plugin-vue-md/src'
 const md = createMarkdown()
 
 const vitePluginMd = (): PluginOption => {
