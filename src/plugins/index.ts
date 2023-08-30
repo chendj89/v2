@@ -11,9 +11,6 @@ const md = createMarkdown()
 md.use(Shiki, {
   theme: 'dark-plus'
 })
-  .use(emojiPlugin)
-  .use(codePlugin)
-  .use(importCodePlugin)
   .use(container, {
     type: 'tip',
     locales: {
@@ -60,7 +57,7 @@ md.use(Shiki, {
   })
   .use(container, {
     type: 'details',
-    before: (info:any) =>
+    before: (info: any) =>
       `<details class="custom-container details">${
         info ? `<summary>${info}</summary>` : ''
       }\n`,
@@ -73,7 +70,7 @@ md.use(Shiki, {
   })
   .use(container, {
     type: 'code-group-item',
-    before: (info:any) => `<CodeGroupItem title="${info}">\n`,
+    before: (info: any) => `<CodeGroupItem title="${info}">\n`,
     after: () => '</CodeGroupItem>\n'
   })
 
@@ -82,14 +79,14 @@ const vitePluginMd = (): PluginOption => {
     name: 'vite-plugin-md',
     transform(code, id) {
       if (id.endsWith('.md')) {
-        const env:any = {}
+        const env: any = {}
         const html = md?.render(code, env)
         const { sfcBlocks } = env
         return [
           sfcBlocks?.scriptSetup ? sfcBlocks?.scriptSetup?.content : '',
           `<template><div class="theme-default-content" style="width:800px;margin:0 auto;">${html}</div></template>`,
-          ...(sfcBlocks?.styles.map((item:any) => item.content) ?? []),
-          ...(sfcBlocks?.customBlocks?.map((item:any) => item.content) ?? [])
+          ...(sfcBlocks?.styles.map((item: any) => item.content) ?? []),
+          ...(sfcBlocks?.customBlocks?.map((item: any) => item.content) ?? [])
         ].join('\n')
       }
     }

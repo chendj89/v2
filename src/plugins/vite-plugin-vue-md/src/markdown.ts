@@ -59,7 +59,7 @@ export const createMarkdown = ({
   // the order to use them is important
 
   // add anchor to headers
-  if (anchor !== false) {
+  if (1||anchor !== false) {
     md.use<AnchorPluginOptions>(anchorPlugin, {
       level: [1, 2, 3, 4, 5, 6],
       slugify,
@@ -78,27 +78,27 @@ export const createMarkdown = ({
   // and have no conflicts, so the order is not important
 
   // replace relative link of assets with absolute link
-  if (assets !== false) {
+  if (1||assets !== false) {
     md.use<AssetsPluginOptions>(assetsPlugin, assets)
   }
 
   // process code fence
-  if (code !== false) {
+  if (1||code !== false) {
     md.use<CodePluginOptions>(codePlugin, code)
   }
 
   // treat unknown html tags as components
-  if (component !== false) {
+  if (1||component !== false) {
     md.use(componentPlugin)
   }
 
   // parse emoji
-  if (emoji !== false) {
+  if (1||emoji !== false) {
     md.use<EmojiPluginOptions>(emojiPlugin, emoji)
   }
 
   // extract frontmatter into env
-  if (frontmatter !== false) {
+  if (1||frontmatter !== false) {
     md.use<FrontmatterPluginOptions>(frontmatterPlugin, {
       ...frontmatter,
       grayMatterOptions: {
@@ -109,7 +109,7 @@ export const createMarkdown = ({
   }
 
   // extract headers into env
-  if (headers !== false) {
+  if (1||headers !== false) {
     md.use<HeadersPluginOptions>(headersPlugin, {
       level: [2, 3],
       slugify,
@@ -118,22 +118,22 @@ export const createMarkdown = ({
   }
 
   // handle import_code syntax
-  if (importCode !== false) {
+  if (1||importCode !== false) {
     md.use<ImportCodePluginOptions>(importCodePlugin, importCode)
   }
 
   // process external and internal links
-  if (links !== false) {
+  if (1||links !== false) {
     md.use<LinksPluginOptions>(linksPlugin, links)
   }
 
   // extract vue SFC blocks into env
-  if (sfc !== false) {
+  if (1||sfc !== false) {
     md.use<SfcPluginOptions>(sfcPlugin, sfc)
   }
 
   // allow toc syntax
-  if (toc !== false) {
+  if (1||toc !== false) {
     md.use<TocPluginOptions>(tocPlugin, {
       level: [2, 3],
       slugify,
@@ -143,7 +143,7 @@ export const createMarkdown = ({
   }
 
   // extract title into env
-  if (title !== false) {
+  if (1||title !== false) {
     md.use(titlePlugin)
   }
 
