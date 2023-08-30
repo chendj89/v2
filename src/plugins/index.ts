@@ -60,7 +60,7 @@ md.use(Shiki, {
   })
   .use(container, {
     type: 'details',
-    before: (info) =>
+    before: (info:any) =>
       `<details class="custom-container details">${
         info ? `<summary>${info}</summary>` : ''
       }\n`,
@@ -73,7 +73,7 @@ md.use(Shiki, {
   })
   .use(container, {
     type: 'code-group-item',
-    before: (info) => `<CodeGroupItem title="${info}">\n`,
+    before: (info:any) => `<CodeGroupItem title="${info}">\n`,
     after: () => '</CodeGroupItem>\n'
   })
 
@@ -82,14 +82,14 @@ const vitePluginMd = (): PluginOption => {
     name: 'vite-plugin-md',
     transform(code, id) {
       if (id.endsWith('.md')) {
-        const env = {}
+        const env:any = {}
         const html = md?.render(code, env)
         const { sfcBlocks } = env
         return [
           sfcBlocks?.scriptSetup ? sfcBlocks?.scriptSetup?.content : '',
-          `<template><div class="vp-doc">${html}</div></template>`,
-          ...(sfcBlocks?.styles.map((item) => item.content) ?? []),
-          ...(sfcBlocks?.customBlocks?.map((item) => item.content) ?? [])
+          `<template><div class="theme-default-content" style="width:740px;margin:0 auto;">${html}</div></template>`,
+          ...(sfcBlocks?.styles.map((item:any) => item.content) ?? []),
+          ...(sfcBlocks?.customBlocks?.map((item:any) => item.content) ?? [])
         ].join('\n')
       }
     }
