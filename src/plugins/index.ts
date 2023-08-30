@@ -87,7 +87,7 @@ const vitePluginMd = (): PluginOption => {
         const { sfcBlocks } = env
         return [
           sfcBlocks?.scriptSetup ? sfcBlocks?.scriptSetup?.content : '',
-          `<template><div class="theme-default-content" style="width:740px;margin:0 auto;">${html}</div></template>`,
+          `<template><div class="theme-default-content" style="width:800px;margin:0 auto;">${html}</div></template>`,
           ...(sfcBlocks?.styles.map((item:any) => item.content) ?? []),
           ...(sfcBlocks?.customBlocks?.map((item:any) => item.content) ?? [])
         ].join('\n')

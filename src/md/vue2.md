@@ -1,8 +1,8 @@
-_你好， {{ msg }}_
+### 你好， {{ msg }}
 
 <RedDiv>
 
-_当前计数为： {{ count }}_
+当前计数为： {{ count }}
 
 </RedDiv>
 
