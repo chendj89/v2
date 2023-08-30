@@ -84,22 +84,13 @@ const vitePluginMd = (): PluginOption => {
       if (id.endsWith('.md')) {
         const env = {}
         const html = md?.render(code, env)
-        return {
-          code: `import {h, defineComponent} from "vue";
-                const _sfc_md = defineComponent({
-                    name: "Markdown",
-                });
-                const _sfc_render =() => {
-                  return h("div", {
-                    class:'theme-default-content',
-                    style:'width:740px;margin:0 auto;',
-                    innerHTML: ${JSON.stringify(html)},
-                  })
-              };
-              _sfc_md.render =_sfc_render
-              export default _sfc_md`,
-          map: null
-        }
+        const { sfcBlocks } = env
+        return [
+          sfcBlocks?.scriptSetup ? sfcBlocks?.scriptSetup?.content : '',
+          `<template><div class="vp-doc">${html}</div></template>`,
+          ...(sfcBlocks?.styles.map((item) => item.content) ?? []),
+          ...(sfcBlocks?.customBlocks?.map((item) => item.content) ?? [])
+        ].join('\n')
       }
     }
   }

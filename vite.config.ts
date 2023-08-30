@@ -6,7 +6,13 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import vitePluginMd from './src/plugins'
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vitePluginMd(), vue(), vueJsx()],
+  plugins: [
+    vitePluginMd(),
+    vue({
+      include: [/(\.vue)$/, /\.md$/]
+    }),
+    vueJsx()
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
