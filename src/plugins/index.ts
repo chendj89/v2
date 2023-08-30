@@ -1,12 +1,5 @@
 import type { PluginOption } from 'vite'
-import {
-  createMarkdown,
-  Shiki,
-  container,
-  emojiPlugin,
-  codePlugin,
-  importCodePlugin
-} from './vite-plugin-vue-md/src'
+import { createMarkdown, Shiki, container } from './vite-plugin-vue-md/src'
 const md = createMarkdown()
 md.use(Shiki, {
   theme: 'dark-plus'
